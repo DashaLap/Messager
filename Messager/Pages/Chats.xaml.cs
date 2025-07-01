@@ -23,6 +23,7 @@ namespace Messager.Pages
     /// </summary>
     public partial class Chats : Page
     {
+        
         public static List<ChatRoom> chatRooms { get; set; }
         public Chats()
         {
@@ -60,11 +61,20 @@ namespace Messager.Pages
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            
+            System.Windows.Application.Current.Shutdown();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
+            AddChatsWindow1 userWindow = new AddChatsWindow1();
+            userWindow.Show();
+        }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            chatRooms = new List<ChatRoom>(DBConnection.Connection.messag.ChatRoom.ToList());
+            lvChat.ItemsSource = chatRooms;
+            lvChat.Items.Refresh();
         }
     }
 }

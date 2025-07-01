@@ -59,19 +59,40 @@ namespace Messager.Pages
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Chats());
-                
+
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
 
             AddUserWindow userWindow = new AddUserWindow(chats);
-            userWindow.Show(); 
+            userWindow.Show();
 
-         
+
             chatUsers = DBConnection.Connection.messag.ChatUser
                 .Where(x => x.ID_ChatRoom == chats.ID).ToList();
             LvE.ItemsSource = chatUsers;
         }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            chatUsers = new List<ChatUser>(DBConnection.Connection.messag.ChatUser.Where(v => v.ID_ChatRoom == chats.ID).ToList());
+            //LvE.Items.Clear();
+            LvE.ItemsSource = chatUsers;
+            LvE.Items.Refresh();
+        }
+
+        private void OutChat_Click(object sender, RoutedEventArgs e)
+        {
+            var userInChat = DBConnection.Connection.messag.ChatUser
+            .FirstOrDefault(cu => cu.ID_ChatRoom == chats.ID && cu.ID_User == Autoriz.user.ID);
+
+            if (userInChat != null)
+            {
+                DBConnection.Connection.messag.ChatUser.Remove(userInChat);
+                DBConnection.Connection.messag.SaveChanges();
+            }
+        }
     }
-}
+} 
+

@@ -42,5 +42,7 @@
         <TextBox Grid.Column="4" Grid.ColumnSpan="3" Margin="90,24,44,5" x:Name="Search" TextChanged="Search_TextChanged"/>
         <Button x:Name="Exit" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" Margin="20 10" Content="Назад" Click="Exit_Click"/>
         <Button x:Name="Add" Grid.Column="5" Grid.Row="6" Grid.ColumnSpan="2" Margin="20 10" Content="Добавить чат" Click="Add_Click"/>
+        <Button x:Name="Refresh" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="2" Margin="20 10" Content="Обновить чат" Click="Refresh_Click"/>
+        
     </Grid>
 </Page>

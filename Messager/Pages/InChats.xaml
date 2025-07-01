@@ -60,5 +60,7 @@
         <Button x:Name="Send" Grid.Column="6" Grid.Row="6"  Content="Отправить" Margin="0,30,0,26" Grid.RowSpan="2" Click="Send_Click"/>
         <Button x:Name="Exit" Grid.Column="0" Grid.Row="6"  Content="Назад" Margin="0,30,0,26" Grid.RowSpan="2" Click="Exit_Click" />
         <Button x:Name="Add" Grid.Column="0" Grid.Row="4"  Content="Добавить" Click="Add_Click"/>
+        <Button x:Name="Refresh" Grid.Column="1" Grid.Row="4"  Content="Обновить" Click="Refresh_Click"/>
+        <Button x:Name="OutChat" Grid.Column="0" Grid.Row="5"  Content="Выйти из чата" Click="OutChat_Click"/>
     </Grid>
 </Page>

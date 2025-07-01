@@ -36,12 +36,21 @@ namespace Messager.Windows
 
         private void Exit1_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
             //NavigationService.Navigate(new InChats());
         }
 
         private void Search1_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            string search = Search1.Text.Trim().ToLower();
+            if (string.IsNullOrEmpty(search))
+            {
+                lvUser.ItemsSource = users;
+            }
+            else
+            {
+                lvUser.ItemsSource = users.Where(v => v.Name != null && v.Name.ToLower().Contains(search)).ToList();
+            }
         }
 
         private void lvUser_SelectionChanged(object sender, SelectionChangedEventArgs e)
